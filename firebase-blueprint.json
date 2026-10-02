@@ -1,0 +1,96 @@
+{
+  "entities": {
+    "Usuario": {
+      "title": "Usuario",
+      "description": "Usuario registrado en Planéa",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "nombre": { "type": "string" },
+        "correo": { "type": "string" },
+        "telefono": { "type": "string" },
+        "fechaRegistro": { "type": "string" },
+        "puntos": { "type": "number" },
+        "notasCrm": { "type": "string" },
+        "etiquetaCrm": { "type": "string", "enum": ["nuevo", "frecuente", "vip", "inactivo"] },
+        "ultimoContacto": { "type": "string" }
+      },
+      "required": ["id", "nombre", "correo", "fechaRegistro"]
+    },
+    "Reserva": {
+      "title": "Reserva",
+      "description": "Reserva de plan realizada por un usuario",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "usuarioId": { "type": "string" },
+        "nombreUsuario": { "type": "string" },
+        "correo": { "type": "string" },
+        "telefono": { "type": "string" },
+        "ubicacionPlan": { "type": "string" },
+        "planSeleccionado": { "type": "string" },
+        "tipoPlan": { "type": "string" },
+        "fecha": { "type": "string" },
+        "hora": { "type": "string" },
+        "numeroPersonas": { "type": "number" },
+        "estado": { "type": "string", "enum": ["pendiente", "confirmada", "cancelada"] },
+        "fechaCreacion": { "type": "string" },
+        "montoEstimado": { "type": "number" },
+        "pagoRealizado": { "type": "boolean" },
+        "fechaPago": { "type": "string" },
+        "correoEnviado": { "type": "boolean" },
+        "notas": { "type": "string" }
+      },
+      "required": ["id", "usuarioId", "nombreUsuario", "correo", "planSeleccionado", "fecha", "hora", "numeroPersonas", "estado", "montoEstimado"]
+    },
+    "Resena": {
+      "title": "Resena",
+      "description": "Reseña u opinión de un plan",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "usuarioId": { "type": "string" },
+        "nombreUsuario": { "type": "string" },
+        "planReservado": { "type": "string" },
+        "calificacion": { "type": "number" },
+        "comentario": { "type": "string" },
+        "fecha": { "type": "string" },
+        "aprobada": { "type": "boolean" }
+      },
+      "required": ["id", "nombreUsuario", "planReservado", "calificacion", "comentario", "fecha"]
+    },
+    "Metrica": {
+      "title": "Metrica",
+      "description": "Evento de auditoría y clics de la plataforma",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "usuarioId": { "type": "string" },
+        "tipoEvento": { "type": "string" },
+        "nombreBotonAccion": { "type": "string" },
+        "pagina": { "type": "string" },
+        "fechaHora": { "type": "string" },
+        "infoAdicional": { "type": "string" }
+      },
+      "required": ["id", "tipoEvento", "nombreBotonAccion", "pagina", "fechaHora"]
+    }
+  },
+  "firestore": {
+    "/usuarios/{usuarioId}": {
+      "schema": "Usuario",
+      "description": "Colección de usuarios de la aplicación"
+    },
+    "/reservas/{reservaId}": {
+      "schema": "Reserva",
+      "description": "Colección de reservas de planes"
+    },
+    "/resenas/{resenaId}": {
+      "schema": "Resena",
+      "description": "Colección de reseñas comunitarias"
+    },
+    "/metricas/{metricaId}": {
+      "schema": "Metrica",
+      "description": "Colección de eventos de métricas y analítica"
+    }
+  }
+}

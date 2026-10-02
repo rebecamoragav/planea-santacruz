@@ -1,0 +1,29 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Reglas para la colección de usuarios
+    match /usuarios/{usuarioId} {
+      allow read, write: if true;
+    }
+
+    // Reglas para la colección de reservas
+    match /reservas/{reservaId} {
+      allow read, write: if true;
+    }
+
+    // Reglas para la colección de reseñas
+    match /resenas/{resenaId} {
+      allow read, write: if true;
+    }
+
+    // Reglas para la colección de métricas
+    match /metricas/{metricaId} {
+      allow read, write: if true;
+    }
+
+    // Regla de prueba de conexión
+    match /test/{docId} {
+      allow read, write: if true;
+    }
+  }
+}
