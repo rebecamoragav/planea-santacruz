@@ -769,7 +769,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onBack }) => {
                           <td className="py-3.5 px-4">
                             <div className="flex items-center gap-2.5">
                               <div className="w-8 h-8 rounded-full bg-[#00B0B0]/20 text-[#00B0B0] flex items-center justify-center font-bold text-xs uppercase shrink-0">
-                                {cliente.nombre.slice(0, 2)}
+                                (e.nombre || '??').slice(0, 2)
                               </div>
                               <div>
                                 <span className="font-bold text-[#181611] block leading-tight">{cliente.nombre}</span>
