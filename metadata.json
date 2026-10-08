@@ -1,0 +1,7 @@
+{
+  "name": "Planéa - Descubre, Planéa y Vive",
+  "description": "Plataforma para encontrar, personalizar y reservar planes en Santa Cruz de la Sierra, Bolivia según presupuesto, zona, personas y actividad.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+
